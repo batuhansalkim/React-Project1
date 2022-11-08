@@ -22,6 +22,9 @@ export default class FormComponent extends Component {
         this.props.hide();
     }
 
+    componentDidMount(){
+        console.log(this.props.user);
+    }
 
   render() {
       return( 
