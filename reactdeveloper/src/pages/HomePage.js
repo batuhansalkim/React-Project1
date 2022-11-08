@@ -11,7 +11,7 @@ export default class HomePage extends Component {
             users:[
                 {
                     id: uuidv4(),
-                    name:"Batuhan",
+                    name:"hkjhsdjkhsjdhjks",
                     surname:"Salkım",
                     mail:"batu@gmail.com"
                 },
