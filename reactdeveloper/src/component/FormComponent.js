@@ -7,6 +7,7 @@ export default class FormComponent extends Component {
     constructor(props){
         super(props);
         this.state = { 
+            id:null,
             name:"",
             surname:"",
             mail:"",
@@ -22,32 +23,51 @@ export default class FormComponent extends Component {
         this.props.hide();
     }
 
+    onUpdate(){
+        this.props.editUser(
+            this.state.id,
+            this.state.name,
+            this.state.surname,
+            this.state.mail
+        );
+        this.props.hide();
+    }
+
     componentDidMount(){
-        console.log(this.props.user);
+        this.setState({
+            id:this.props.user.id,
+            name:this.props.user.name,
+            surname: this.props.user.surname,
+            mail: this.props.user.mail,
+        })
     }
 
   render() {
       return( 
           <Modal fade={false} isOpen={this.props.visible}>
-              <ModalHeader>Modal title</ModalHeader>
+              <ModalHeader>{this.props.title}</ModalHeader>
               <ModalBody>
                   <Form>
                     <FormGroup>
                         <Label for="name">Name </Label>
-                        <Input onChange={(e)=> this.setState({name:e.target.value})} id="name"name="name"type="text"/>
+                        <Input
+                        value = {this.state.name}
+                         onChange={(e)=> this.setState({name:e.target.value})} id="name"name="name"type="text"/>
                     </FormGroup>
                     <FormGroup>
                         <Label for="surname">Surname</Label>
-                          <Input onChange={(e) => this.setState({ surname: e.target.value })} id="surname" name="surname" type="text" />
+                          <Input  value={this.state.surname} onChange={(e) => this.setState({ surname: e.target.value })} id="surname" name="surname" type="text" />
                     </FormGroup>
                     <FormGroup>
                         <Label for="name">Mail</Label>
-                          <Input onChange={(e) => this.setState({ mail: e.target.value })} id="mail" name="mail" type="mail" />
+                          <Input value={this.state.mail} onChange={(e) => this.setState({ mail: e.target.value })} id="mail" name="mail" type="mail" />
                     </FormGroup>
                     </Form>
               </ModalBody>
               <ModalFooter>
-                  <button className='btn btn-success' onClick={()=>this.onSubmit()}>Add</button>
+                {
+                      this.props.user.id ? <button className='btn btn-success' onClick={()=>this.onUpdate()}>Update</button> : <button className='btn btn-success' onClick={() => this.onSubmit()}>Add</button>
+                }
                   <button className='btn btn-danger' onClick={()=> this.props.hide()}>Cancel</button>
               </ModalFooter>
           </Modal>

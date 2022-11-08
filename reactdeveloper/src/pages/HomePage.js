@@ -43,6 +43,7 @@ export default class HomePage extends Component {
         };
         this.addUser = this.addUser.bind(this);
         this.deleteUser = this.deleteUser.bind(this);
+        this.editUser = this.editUser.bind(this);
     }
 
 
@@ -71,7 +72,25 @@ export default class HomePage extends Component {
         });
         this.setState({users});
         toast(`"${obj.name}" İsimli kullanıcı Silindi.`)
+    };
 
+    editUser = (id,name,surname,mail)=> {
+        if(id,name,surname,mail){
+            const users = [...this.state.users];
+            let updateUsers = users.map(user=>{
+                if(user.id === id){
+                    user = {
+                        id: id,
+                        name: name,
+                        surname: surname,
+                        mail: mail,
+                    };
+                }
+            });
+            this.setState({
+                users:updateUsers,
+            })
+        }
     }
 
   render() {
@@ -80,10 +99,11 @@ export default class HomePage extends Component {
         <ToastContainer/>
         <Navbar color="light" expand="md" light>
             <div className="container">
-                <NavbarBrand href="/">React-intro</NavbarBrand>
+                <NavbarBrand href="/">Batuhan Salkım</NavbarBrand>
             </div>
         </Navbar>
-        <UserListComponent users={this.state.users} addUser={this.addUser} deleteUser={this.deleteUser}/>
+        <UserListComponent users={this.state.users} addUser={this.addUser} deleteUser={this.deleteUser}
+        editUser={this.editUser}/>
       </div>
     );
   }
