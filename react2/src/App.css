@@ -22,4 +22,7 @@ body{
   height: 35px;
   padding: 0 10px;
   border: 0;
-}
+  outline: 0;
+  background-color: black;
+  color: white;
+} 
