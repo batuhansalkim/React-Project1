@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
+import TodoField from './components/TodoField';
 
 function App() {
   
   return(
     <div className='app'>
-      <h1>todos</h1>
+      <h1>ToDo List</h1>
+      <TodoField/>
     </div>
   );
 
