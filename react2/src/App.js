@@ -1,16 +1,25 @@
 import React from 'react';
 import './App.css';
 import TodoField from './components/TodoField';
-import { Todos   } from './components/Todos';
+import React, {useState} from 'react';
+import Yapılacaklar from './components/Yapılacaklar';
+
 function App() {
-  
+  const [todos, setTodos] = useState([
+    {
+      id:1,
+      name:"GYM",
+      status:false,
+    },
+  ]);
   
 
   return(
     <div className='app'>
       <h1>ToDo List</h1>
       <TodoField/>
-      <Todos />
+    
+      <Yapılacaklar todos={todos}/>
     </div>
   );
 
