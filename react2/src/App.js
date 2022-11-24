@@ -1,16 +1,21 @@
 import React from 'react';
 import './App.css';
 import TodoField from './components/TodoField';
-import React, {useState} from 'react';
+import {useState} from 'react';
 import Yapılacaklar from './components/Yapılacaklar';
 
 function App() {
   const [todos, setTodos] = useState([
     {
       id:1,
-      name:"GYM",
+      name:"React Calis",
       status:false,
     },
+    {
+      id:2,
+      name:"JS Calis",
+      status:true,
+    }
   ]);
   
 

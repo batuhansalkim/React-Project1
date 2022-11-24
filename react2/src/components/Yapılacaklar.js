@@ -6,10 +6,10 @@ const Yapılacaklar = ({todos}) => {
             {
               todos.map(todo => 
                 <li key={todo.id} className='todos__item'>
-                    <span className='todos__text'>{todo.name}</span>
+                    <span className={todo.status ? "todos__text todos__text--done":"todos__text"}>{todo.name}</span>
                     <div className='todos__buttons'>
-                        <a href="#">✅</a>
-                        <a href="#">❌</a>
+                          <button disabled={todo.status} href="#">✅</button>
+                          <button href="#">❌</button>
                     </div>
                 </li>)
             }
